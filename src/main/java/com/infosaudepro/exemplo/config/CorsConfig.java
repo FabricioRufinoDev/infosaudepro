@@ -14,14 +14,14 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 // ✅ Permite acesso de localhost:8000 e 127.0.0.1:8000
-                registry.addMapping("/**")
+                registry.addMapping("/**") // Aplica a configuração a TODOS os endpoints do backend
                         .allowedOrigins(
                                 "http://localhost:8000",
-                                "http://127.0.0.1:8000" // ⬅️ Adicionado esta linha
+                                "http://127.0.0.1:8000" // ⬅️ CORRIGIDO: Removido o caminho ("/front-end/")
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("*")
-                        .allowCredentials(true);
+                        .allowedHeaders("*") // Permite todos os cabeçalhos
+                        .allowCredentials(true); // Permite cookies, headers de autorização, etc.
             }
         };
     }

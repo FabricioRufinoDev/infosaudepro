@@ -1,4 +1,4 @@
-package com.infosaudepro.auth;
+package com.infosaudepro.exemplo.auth;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

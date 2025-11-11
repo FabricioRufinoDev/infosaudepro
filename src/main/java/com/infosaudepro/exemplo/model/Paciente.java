@@ -15,7 +15,7 @@ public class Paciente {
     private String cpfCriptografado;
     private String diagnosticoCriptografado;
 
-    // --- GETTERS E SETTERS ADICIONADOS MANUALMENTE ---
+    //  GETTERS E SETTERS
 
     public Long getId() {
         return id;
