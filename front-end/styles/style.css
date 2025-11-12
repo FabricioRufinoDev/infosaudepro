@@ -1,175 +1,287 @@
-/* frontend/style.css */
+/* --- Variáveis e Configurações Globais --- */
+
 :root {
-    --color-primary: #007bff;
-    --color-secondary: #28a745;
-    --color-background: #f8f9fa;
-    --color-card-bg: #ffffff;
-    --color-text: #343a40;
-    --color-error: #dc3545;
+    --color-primary: #004d99;        /* Azul Marinho (Base/Header) */
+    --color-secondary: #007bff;      /* Azul Claro (Ações e Status) */
+    --color-background: #f8f9fa;    /* Fundo suave */
+    --color-card-bg: #ffffff;        /* Fundo dos cards */
+    --color-text: #343a40;           /* Cor padrão do texto */
+    --color-error: #dc3545;          /* Vermelho (Excluir/Erros) */
+    --color-success: #28a745;        /* Verde (Cadastrar/Sucesso) */
+    --color-warning: #ffc107;        /* Amarelo/Laranja (Editar/Alerta) */
+    --color-border: #e9ecef;         /* Cor de borda clara */
+    --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--color-background);
     color: var(--color-text);
-    margin: 0;
-    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
+/* --- Header e Layout Principal --- */
+
 header {
-    width: 100%;
     background-color: var(--color-primary);
     color: white;
-    padding: 15px 5%;
+    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-light);
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
 }
 
-#logout-button {
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid white;
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 4px;
-    color: white;
-    transition: background-color 0.2s;
-}
-#logout-button:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+.container {
+    flex-grow: 1;
+    padding: 2rem 5%;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.container {
-    width: 90%;
-    max-width: 450px;
-    padding: 40px 0;
-}
+/* --- Cards (Seções Principais) --- */
 
 .card {
     background-color: var(--color-card-bg);
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    margin-bottom: 2rem;
 }
 
-h2 {
+.card h2 {
     color: var(--color-primary);
-    margin-top: 0;
-    font-size: 1.8rem;
-    text-align: center;
-    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
     padding-bottom: 10px;
-    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
 }
 
 .icon {
+    margin-right: 10px;
     font-size: 1.2em;
-    margin-right: 5px;
 }
+
+/* --- Formulários e Inputs --- */
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
-label {
+.input-group label {
     display: block;
     margin-bottom: 5px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-input[type="text"], input[type="password"], input[type="number"] {
+input[type="text"], 
+input[type="password"], 
+input[type="number"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
 }
+
 input:focus {
-    border-color: var(--color-primary);
-    outline: none;
+    border-color: var(--color-secondary);
+    outline: 2px solid rgba(0, 123, 255, 0.2);
 }
+
+/* --- Fieldsets (Grupos CRUD) --- */
+
+fieldset {
+    border: 1px solid var(--color-border);
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+fieldset:hover {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.1);
+}
+
+legend {
+    color: var(--color-primary);
+    font-weight: 700;
+    padding: 0 10px;
+    font-size: 1.1rem;
+}
+
+fieldset input {
+    margin-bottom: 10px;
+}
+
+/* --- Botões Comuns --- */
 
 button {
     background-color: var(--color-secondary);
     color: white;
     padding: 10px 15px;
-    margin-top: 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    width: 100%;
     font-size: 1rem;
+    font-weight: 600;
+    margin-top: 5px;
     transition: background-color 0.3s;
 }
-button:hover {
-    background-color: #1e7e34;
-}
 
-#login-section button {
+button:hover {
     background-color: var(--color-primary);
 }
-#login-section button:hover {
-    background-color: #0056b3;
+
+#logout-button {
+    background-color: var(--color-error);
+    margin-top: 0;
+}
+
+#logout-button:hover {
+    background-color: #c82333;
+}
+
+/* --- Botões CRUD (Cores Temáticas) --- */
+
+/* Cadastrar (CREATE) */
+#create-button { background-color: var(--color-success); }
+#create-button:hover { background-color: #1e7e34; }
+
+/* Consultar (READ) - Usa a cor secundária padrão (azul) */
+#search-button { background-color: var(--color-secondary); }
+
+/* Editar (UPDATE) - Usa a cor de alerta */
+#update-button { 
+    background-color: var(--color-warning); 
+    color: var(--color-text); /* Cor de texto mais escura para contraste */
+}
+#update-button:hover { background-color: #e0a800; }
+
+/* Excluir (DELETE) - Usa a cor de erro */
+#delete-button { background-color: var(--color-error); }
+#delete-button:hover { background-color: #c82333; }
+
+/* --- Status e Mensagens --- */
+
+.status-bar {
+    background-color: #e9f0f7;
+    padding: 10px;
+    border-left: 5px solid var(--color-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
 }
 
 .message {
+    padding: 10px 0;
+    font-size: 0.95rem;
     font-weight: bold;
-    margin-top: 15px;
-    text-align: center;
 }
+
 .error-message {
     color: var(--color-error);
 }
-.success-message {
-    color: var(--color-secondary);
-}
 
-.status-bar {
-    text-align: center;
-    padding: 10px;
-    background-color: #e2f0e8;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
+/* --- Dados Descriptografados (Prática de SI) --- */
 
 .data-box {
-    text-align: left;
-    border: 1px solid #dee2e6;
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 4px;
-    background-color: #f1f1f1;
+    margin-top: 25px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 20px;
 }
 
+.data-box h3 {
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.data-box p {
+    line-height: 1.6;
+}
+
+/* Destaque para Dado Sensível (Alerta de Descriptografia) */
 .dado-sensivel {
-    font-weight: 600;
-    color: var(--color-error); /* Destaca o dado crítico */
+    font-weight: bold;
+    color: #856404; /* Cor escura do alerta */
+    background-color: #fff3cd; /* Fundo amarelo suave */
+    padding: 3px 6px;
+    border-radius: 4px;
+    border: 1px solid #ffeeba;
+    display: inline-block;
 }
 
 .nota-seguranca {
-    font-size: 0.8em;
+    font-size: 0.8rem;
     color: #6c757d;
-    margin-top: 15px;
-    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-left: 3px solid var(--color-secondary);
+    background-color: #f1f1f1;
+    border-radius: 4px;
 }
 
+/* --- Footer --- */
+
 footer {
-    width: 100%;
+    padding: 1rem;
     text-align: center;
-    padding: 10px;
-    margin-top: auto; /* Empurra o footer para baixo */
-    font-size: 0.9em;
+    font-size: 0.8rem;
     color: #6c757d;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+}
+
+/* --- Responsividade (A partir de tablets) --- */
+
+@media (min-width: 768px) {
+    .card {
+        padding: 40px;
+    }
+    
+    /* Organiza os campos e botões dentro dos fieldsets em colunas */
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        align-items: flex-end;
+    }
+
+    legend {
+        grid-column: 1 / -1; /* Título ocupa toda a largura */
+    }
+
+    fieldset input {
+        margin-bottom: 0;
+    }
+    
+    /* Faz o botão de cada fieldset ocupar a última coluna */
+    fieldset button {
+        grid-column-end: -1;
+        width: 100%;
+        max-width: 200px; /* Limita a largura para melhor visualização */
+        justify-self: end;
+    }
+    
+    /* Ajuste específico para o fieldset de consulta com apenas 2 elementos */
+    #data-section fieldset:nth-child(2) { 
+        grid-template-columns: 2fr 1fr;
+    }
 }

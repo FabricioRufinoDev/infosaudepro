@@ -11,7 +11,7 @@
     <header>
         <div class="logo">InfoSaúde PRO</div>
         <nav>
-            <button id="logout-button" style="display: none;" onclick="logout()">Sair</button>
+            <button id="logout-button" style="display: none;">Sair</button>
         </nav>
     </header>
 
@@ -27,26 +27,51 @@
                 <label for="password">Senha:</label>
                 <input type="password" id="password" placeholder="Digite sua senha">
             </div>
-            <button onclick="handleLogin()">Entrar</button>
+            <button id="login-button">Entrar</button> 
             <p id="login-message" class="message error-message"></p>
         </div>
 
         <div id="data-section" class="card" style="display: none;">
-            <h2><span class="icon">🛡️</span> Consulta de Prontuário</h2>
+            <h2><span class="icon">🛡️</span> Painel de Pacientes - ADMIN</h2>
             <p class="status-bar">Status: <strong id="auth-status">Aguardando...</strong></p>
             
-            <div class="input-group">
-                <label for="pacienteId">ID do Paciente:</label>
-                <input type="number" id="pacienteId" placeholder="1, 2, 3...">
-            </div>
+            <fieldset>
+                <legend>➕ Cadastrar Novo Paciente (POST /cadastrarSeguro)</legend>
+                <input type="text" id="newNome" placeholder="Nome do Paciente">
+                <input type="text" id="newCpf" placeholder="CPF">
+                <input type="text" id="newDiagnostico" placeholder="Diagnóstico">
+                <button id="create-button">Cadastrar</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>🔎 Consultar Paciente por ID</legend>
+                <input type="number" id="pacienteId" placeholder="ID do Paciente">
+                <button id="search-button">Buscar Prontuário</button>
+            </fieldset>
             
-            <button onclick="buscarPaciente()">Buscar Prontuário</button>
+            <fieldset>
+                <legend>✏️ Editar Paciente por ID </legend>
+                <input type="number" id="editId" placeholder="ID do Paciente a editar">
+                <input type="text" id="editNome" placeholder="Novo Nome">
+                <input type="text" id="editCpf" placeholder="Novo CPF">
+                <input type="text" id="editDiagnostico" placeholder="Novo Diagnóstico">
+                <button id="update-button">Salvar Edição</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>🗑️ Excluir Paciente </legend>
+                <input type="number" id="deleteId" placeholder="ID do Paciente a excluir">
+                <button id="delete-button">Excluir</button>
+            </fieldset>
             
+            <hr>
+            
+            <h3>Prontuário Descriptografado:</h3>
             <div id="paciente-data" class="data-box">
                 </div>
             
             <p class="nota-seguranca">
-                * Demonstra: **Criptografia/Descriptografia** (dados lidos) e **Autorização (ROLE)**.
+                * Demonstra: **Criptografia/Descriptografia** e **Autorização (ROLE)**.
             </p>
         </div>
     </div>
