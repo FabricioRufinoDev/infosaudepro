@@ -1,10 +1,9 @@
 package com.infosaudepro.exemplo.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
+// Lombok @Data removido
 @Entity
-@Data
 @Table(name = "pacientes")
 public class Paciente {
 
@@ -13,7 +12,43 @@ public class Paciente {
     private Long id;
 
     private String nome;
-    // 🔒 Criptografados (Dados em Repouso)
     private String cpfCriptografado;
     private String diagnosticoCriptografado;
+
+    //  GETTERS E SETTERS
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    // Necessário para: paciente.setNome(dto.getNome());
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    // Necessário para: paciente.setCpfCriptografado(...) e paciente.getCpfCriptografado()
+    public String getCpfCriptografado() {
+        return cpfCriptografado;
+    }
+
+    public void setCpfCriptografado(String cpfCriptografado) {
+        this.cpfCriptografado = cpfCriptografado;
+    }
+
+    // Necessário para: paciente.setDiagnosticoCriptografado(...) e paciente.getDiagnosticoCriptografado()
+    public String getDiagnosticoCriptografado() {
+        return diagnosticoCriptografado;
+    }
+
+    public void setDiagnosticoCriptografado(String diagnosticoCriptografado) {
+        this.diagnosticoCriptografado = diagnosticoCriptografado;
+    }
 }
